@@ -1,0 +1,140 @@
+<h2>
+{{ titulo_empleados }}!!
+</h2>
+<!-- Accediendo a los valores del objeto empleados -->
+<ul>
+  <li>{{ empleados.nombre }}!!</li>
+  <li>{{ empleados.edad }}!!</li>
+  <li>{{ empleados.cargo}}!!</li>
+  <li>{{ empleados.contratado}}!!</li>
+</ul>
+
+<hr>
+
+<!-- Arreglo trabajadores -->
+<ul>
+  <!-- Primer Trabajador -->
+  <li>
+    {{ trabajadores[0].nombre }},
+    {{ trabajadores[0].edad }},
+    {{ trabajadores[0].cargo }},
+    {{ trabajadores[0].contratado }}
+  </li>
+<hr>
+  <!-- Segundo Trabajador -->
+  <li>
+    {{ trabajadores[1].nombre }},
+    {{ trabajadores[1].edad }},
+    {{ trabajadores[1].cargo }},
+    {{ trabajadores[1].contratado }}
+  </li>
+</ul>
+
+
+<hr>
+
+<!--  //Uso de directiva ngIf-->
+<!--  //Ejemplo de reactividad-->
+
+<!-- Accediendo a los valores del objeto empleados -->
+<div *ngIf="trabajador_externo == true" ><!-- ngIf, funciona como una condicion IF-->
+  <!-- Uso de directiva evento (click)-->
+  <!-- Llamos la funcion "cambiarExterno" del componente empleados-->
+  <!-- Le pasamod el parametro(valor) false-->
+  <button (click)="cambiarExterno(false)"> Mostrar trabajadores</button>
+    <ul>
+      <li>{{ empleados.nombre }}!!</li>
+      <li *ngIf="empleados.edad == 30">{{ empleados.edad }} de edad: tiene bono!!!!</li>
+      <li></li>
+      <li>{{ empleados.cargo}}!!</li>
+      <li>{{ empleados.contratado}}!!</li>
+      <li *ngIf="empleados.contratado == true">Esta contratado!!</li>
+      <li *ngIf="empleados.contratado == False">NO Esta contratado!!</li>
+    </ul>
+</div>
+
+
+<div *ngIf="trabajador_externo == false" ><!-- ngIf, funciona como una condicion IF-->
+  <!-- Uso de directiva evento (click)-->
+  <!-- Llamos la funcion "cambiarExterno" del componente empleados-->
+  <!-- Le pasamos el parametro(valor) true-->
+  <button (click)="cambiarExterno(true)"> Mostrar Empleados</button>
+    <ul>
+        <li>{{ trabajadores[1].nombre }}</li>
+        <li>{{ trabajadores[1].edad }}</li>
+        <li>{{ trabajadores[1].cargo }}</li>
+        <li> {{ trabajadores[1].contratado }}</li>
+        <li *ngIf="trabajadores[1].contratado == true">Esta contratado!!</li>
+        <li *ngIf="trabajadores[1].contratado == False">NO Esta contratado!!</li>
+    </ul>
+</div>
+
+<hr>
+
+<h3>lISTADO DE EMPLEADOS</h3>
+<ul>
+    <!-- 1 Ejempllo de *ngIf -->
+    <!-- <li *ngFor=" let empleados of trabajadores"> -->
+    <!-- Por cada trabajador que hay en el arreglos, se creara una variable empleado y se estara mostrando sus propiedades.-->
+
+    <li *ngFor=" let empleados of trabajadores; let i = index"><!-- crea una variable para el indice -->
+      <strong> Empleado:{{ i+1 }}</strong><!-- Se le suma 1 por cada ciclo y de le agrega la palabra empleado -->
+
+      <ul>
+        <li>{{ empleados.nombre }}!!</li>
+        <li *ngIf="empleados.edad == 30">{{ empleados.edad }} de edad: tiene bono!!!!</li>
+        <li></li>
+        <li>{{ empleados.cargo}}!!</li>
+        <li>{{ empleados.contratado}}!!</li>
+        <li *ngIf="empleados.contratado == true">Esta contratado!!</li>
+        <li *ngIf="empleados.contratado == False">NO Esta contratado!!</li>
+      </ul>
+  </li>
+</ul>
+
+<hr>
+    <!-- Ejempllo de *ngSwitch con COLORES -->
+<h3>Colores Switch</h3>
+
+<ul [ngSwitch]="color">
+  <li *ngSwitchCase="'red'" [ngStyle]="{'background':color, 'color': 'white', 'padding': '20px'  }">ROJO</li>
+  <!-- 'background':color, La propiedad color la esta tomando del componente empleados. -->
+</ul>
+
+<ul [ngSwitch]="color">
+  <li *ngSwitchCase="'green'" [ngStyle]="{'background':color, 'color': 'white', 'padding': '20px'  }">GREEN</li>
+</ul>
+
+<ul [ngSwitch]="color">
+  <li *ngSwitchCase="'yellow'" [ngStyle]="{'background':color, 'color': 'white', 'padding': '20px'  }">YELLOW</li>
+</ul>
+
+<hr>
+
+  <!-- Ejemplo de two way data-binding. -->
+<h3>Selector de colores</h3>
+<input type="text" [(ngModel)]="color_seleccionado"/>
+<!--
+[(ngModel)], permite modificar de forma bidireccional,
+le va a indicar que propiedad voy a modificar de mi classe del componente,
+cuando yo modifique el input.
+-->
+
+<!-- [style.border], permite generar un borde negro, cuando ponemos el color rojo -->
+<pre [style.border]="color_seleccionado == 'red' ? '5px solid black' : '1px solid white'"
+     [ngClass]="{
+       fondoAzul: color_seleccionado == 'blue',
+       fondoVerde: color_seleccionado == 'green'
+     }"
+     >
+  <strong>Color elegido:</strong>
+  {{ color_seleccionado}}  <!-- Mostrando los datos de la propiedad color_seleccionado. -->
+</pre>
+  <!-- Creacion de cuadro -->
+<div [ngStyle]="{
+    'background':color_seleccionado,
+    'width': '200px',
+    'height': '200px',
+    'margin-left': '350px'
+
+  }"><div style="clean:both"></div>

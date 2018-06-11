@@ -1,0 +1,52 @@
+
+<body>
+
+
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Bienvenido {{ title }}!
+  </h1>
+
+  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+</div>
+
+<div style="text-align:center">
+
+<!--<app-frutas></app-frutas> //Nombre del selector del componente.-->
+
+
+<!--<<app-empleados> </app-empleados>-->
+
+<hr>
+  <nav>
+    <a [routerLink]="['/app-home']" [routerLinkActive]="['link-activo']">HOME</a>
+    <!-- [routerLink] es una directiva que permite configurar los enlaces dinamicamente.-->
+    <!-- [routerLinkActive] es una directiva que permite destacar con color, el elemento del menu, que este activo.-->
+    <!-- link-activo, nombre de la clase en style.css.-->
+    -
+    <a [routerLink]="['/app-frutas']" [routerLinkActive]="['link-activo']">FRUTAS</a>
+    -
+    <a [routerLink]="['/app-empleados']" [routerLinkActive]="['link-activo']">EMPLEADOS</a>
+    -
+    <a [routerLink]="['/app-contacto']" [routerLinkActive]="['link-activo']">CONTACTO</a>
+  </nav>
+
+
+
+
+
+<router-outlet></router-outlet><!--Carga de la ruta actual del coponente-->
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</body>

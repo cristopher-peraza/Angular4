@@ -1,0 +1,14 @@
+.fondoAzul {
+  background: lightblue !important;
+}
+
+.fondoVerde {
+  background: green !important;
+}
+
+
+
+.link-activo {/* Utilizado en la navegacion en app.component.html*/
+  font-weight: bold;
+  background: yellow;
+}
